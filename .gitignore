@@ -1,0 +1,13 @@
+#npm
+node_modules/
+
+#Compiled js
+public/dist/
+
+#Webstorm
+.idea/
+
+#Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
