@@ -7,8 +7,8 @@ Documentation placeholder for Therakos
 You can log in to Mobile locker console with: 
 
     https://manage.mobilelockerapp.com/portal.php/
-    lynne.newell@ghgroup.com
-    ghg2016
+    Username: lynne.newell@ghgroup.com
+    Password: ghg2016
  
 ### How do I get set up? ###
 
