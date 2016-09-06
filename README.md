@@ -4,11 +4,11 @@ Documentation placeholder for Therakos
 
 ### Mobile Locker ###
 
-You can log in with 
+You can log in to Mobile locker console with: 
 
-https://manage.mobilelockerapp.com/portal.php/
-lynne.newell@ghgroup.com
-ghg2016
+    https://manage.mobilelockerapp.com/portal.php/
+    lynne.newell@ghgroup.com
+    ghg2016
  
 ### How do I get set up? ###
 
