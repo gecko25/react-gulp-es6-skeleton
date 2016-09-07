@@ -1,0 +1,39 @@
+.hide-tablet{
+  @media #{$tablet} {   //
+    display: none;
+  }
+}
+
+.hide-mobile{
+  @media #{$mobile}{
+    display: none;
+  }
+}
+
+//visible-lte-tablet-inline, visible-lte-tablet-inlineblock, visible-lte-tablet-block
+$displays: inline block inline-block;
+@each $display in $displays{
+   .visible-lte-tablet-#{$display} {
+    display: none;
+
+    @media #{$tablet} {
+      display: $display;
+    }
+
+    @media #{$mobile} {
+      display: $display;
+    }
+  }
+}
+
+//visible-gte-tablet-inline, visible-gte-tablet-inline-block, visible-gte-tablet-block
+$displays: inline block inline-block;
+@each $display in $displays{
+   .visible-gte-tablet-#{$display} {
+    display: $display;
+
+    @media #{$mobile} {
+      display: none;
+    }
+  }
+}
