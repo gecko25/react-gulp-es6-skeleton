@@ -43,6 +43,7 @@ gulp.task('compile-sass', function() {
         .pipe(cleanCSS())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('public/dist/styles'))
+        .pipe(browserSync.stream())
 });
 
 gulp.task('compile-js', function() {
