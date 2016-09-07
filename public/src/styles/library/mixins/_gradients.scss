@@ -1,0 +1,17 @@
+@mixin top-bottom-linear-gradient($fromColor, $toColor) {
+  background-color: $toColor; /* Fallback Color */
+  background-image: linear-gradient(to bottom, $fromColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+@mixin left-right-gradient($fromColor, $toColor){
+  background-color: $toColor; /* Fallback Color */
+  background-image: linear-gradient(to right, $fromColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}
+
+@mixin right-left-gradient($fromColor, $toColor){
+  background-color: $toColor; /* Fallback Color */
+  background-image: linear-gradient(to left, $fromColor, $toColor);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}');
+}

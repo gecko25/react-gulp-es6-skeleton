@@ -2,14 +2,15 @@
  * L I B R A R Y *
 ******************/
 
-@import 'library/variables.scss';
-@import 'library/colors.scss';
-@import 'library/responsive.scss';
-@import 'library/global.scss';
+@import 'library/variables';
+@import 'library/colors';
+@import 'library/mixins';
+@import 'library/responsive';
+@import 'library/global';
 
 
 /*******************
  * P A R T I A L S *
 ********************/
 
-@import 'partials/partial.scss';
+@import 'partials/partial';
