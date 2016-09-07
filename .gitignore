@@ -11,3 +11,5 @@ public/dist/
 .DS_Store
 .AppleDouble
 .LSOverride
+
+npm-debug.log
