@@ -60,15 +60,14 @@ gulp.task('compile-js', function() {
  * ES6
  ******/
 // gulp.task("compile-js", function() {
-//     console.log('compiling and adding showme.js...');
 //     return gulp.src([
-//             'public/app/**/*.js',
+//             'public/js/**/*.js',
 //         ])
 //         .pipe(sourcemaps.init())
 //         .pipe(babel({
 //             presets: ['es2015']
 //         }))
-//         .pipe(concat("showme.js"))
+//         .pipe(concat("app.js"))
 //         .pipe(sourcemaps.write('.'))
 //         .pipe(gulp.dest('public/generated'));
 // });
@@ -81,7 +80,7 @@ gulp.task('compile-js', function() {
 //     .transform(reactify)
 //     .bundle()
 //     .on('error', console.error.bind(console))
-//     .pipe(source('search.js'))
+//     .pipe(source('app.js'))
 //     .pipe(gulp.dest(config.paths.dist))
 //     .pipe(browserSync.stream())
 // })
