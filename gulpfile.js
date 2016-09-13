@@ -20,6 +20,7 @@ gulp.task('nodemon', function() {
     nodemon({
         script: config.server,
         ext: 'js',
+        ignore: ['public/'],
         ignore: ['/node_modules/**/*', 'public/dist']
     })
 });
@@ -46,7 +47,7 @@ gulp.task('compile-sass', function() {
         .pipe(browserSync.stream())
 });
 
-gulp.task('compile-js', function() {
+gulp.task('compile-js', function(done) {
     gulp.src(['public/src/js/**/*.js'])
         .pipe(sourcemaps.init())
         .pipe(concat("app.js"))  //concatenates all js files into one file
@@ -55,6 +56,7 @@ gulp.task('compile-js', function() {
         }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('public/dist/js'))
+        .on("end", done);
 });
 
 /******
@@ -93,10 +95,10 @@ gulp.task('delete-dist', function () {
 });
 
 gulp.task('watch', function(){
-    gulp.watch('./public/src/**/*.js', ['compile-js']);
+    gulp.watch('./public/src/**/*.js', ['compile-js']).on("change", browserSync.reload);
     gulp.watch('./public/src/**/*.scss', ['compile-sass']);
     gulp.watch('./public/src/images/**/*', ['copy-images']);
-    gulp.watch('./public/src**/*.html', ['copy-html']);
+    gulp.watch('./public/src**/*.html', ['copy-html']).on("change", browserSync.reload);
 })
 
 gulp.task('build-dist', ['copy-html', 'compile-sass', 'copy-images', 'compile-js']);

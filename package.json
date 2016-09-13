@@ -22,7 +22,9 @@
     "gulp-concat": "^2.6.0",
     "gulp-minify": "0.0.14",
     "gulp-nodemon": "^2.1.0",
+    "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
     "nodemon": "^1.10.2",
     "plumber": "^0.4.8"
   }
