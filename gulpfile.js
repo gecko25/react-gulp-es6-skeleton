@@ -12,7 +12,6 @@ var browserSync = process.env.PORT ? null : require('browser-sync').create();
 
 //React & ES6 libraries
 var browserify = require('browserify');  // Bundles components
-var reactify = require('reactify'); // transforms React JSX to JS
 var source = require('vinyl-source-stream'); //uses conventional text streams with gulp
 var babelify = require('babelify')
 
