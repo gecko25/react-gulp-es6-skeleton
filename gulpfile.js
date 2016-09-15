@@ -10,10 +10,11 @@ var minify = require('gulp-minify');
 var cleanCSS = require('gulp-clean-css');
 var browserSync = process.env.PORT ? null : require('browser-sync').create();
 
-//React libraries
+//React & ES6 libraries
 var browserify = require('browserify');  // Bundles components
 var reactify = require('reactify'); // transforms React JSX to JS
 var source = require('vinyl-source-stream'); //uses conventional text streams with gulp
+var babelify = require('babelify')
 
 var config = {
     supportedBrowsers: { browsers: ['last 2 version', '> 5%', 'Firefox > 1', 'last 10 Opera versions', 'ie >= 8'] },
@@ -43,16 +44,27 @@ gulp.task('compile-sass', function() {
         .pipe(cleanCSS())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('public/dist/styles'))
+        .pipe(browserSync.stream())
 });
 
-gulp.task('compile-components', function(){
+gulp.task('compile-components', function(done){
+    console.log('transforming jsx into js..')
+    console.log('transforming es5 into es6..')
     browserify('public/src/components/app.js')
-        .transform([reactify])
+        .transform(babelify, {presets: ["es2015", "react"]})
         .bundle()
         .on('error', console.error.bind(console))
         .pipe(source('bundle.js'))
-        .pipe(gulp.dest('public/dist/components/'))
-        .pipe(browserSync.stream())
+        .pipe(gulp.dest('public/dist/components/'));
+
+    console.log('minifying js..')
+    gulp.src(['public/dist/components/bundle.js'])
+        .pipe(minify({
+            ext: {src: '.js', min: '.min.js'},
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('public/dist/components'))
+        .on("end", done);
 });
 
 gulp.task('delete-dist', function () {
@@ -61,11 +73,13 @@ gulp.task('delete-dist', function () {
 });
 
 gulp.task('watch', function(){
-    gulp.watch('./public/src/**/*.js', ['compile-components']);
+    gulp.watch('./public/src/components/*.js', ['compile-components']);
+    gulp.watch('./public/dist/components/bundle.js').on("change", browserSync.reload);
     gulp.watch('./public/src/**/*.scss', ['compile-sass']);
     gulp.watch('./public/src/images/**/*', ['copy-assets']);
-    gulp.watch('./public/src**/*.html', ['copy-assets']);
-});
+    gulp.watch('./public/src**/*.html', ['copy-assets']).on("change", browserSync.reload);
+})
+
 
 gulp.task('build-dist', ['copy-assets', 'compile-sass', 'compile-components']);
 
