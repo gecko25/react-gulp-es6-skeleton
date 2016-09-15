@@ -3,6 +3,7 @@ node_modules/
 
 #Compiled js
 public/dist/
+public/src/vendor
 
 #Webstorm
 .idea/
