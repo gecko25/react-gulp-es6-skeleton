@@ -49,7 +49,7 @@ gulp.task('compile-sass', function() {
 gulp.task('compile-components', function(done){
     console.log('transforming jsx into js..')
     console.log('transforming es5 into es6..')
-    browserify('public/src/components/app.js')
+    browserify('public/src/components/app.js', {debug: true})
         .transform(babelify, {presets: ["es2015", "react"]})
         .bundle()
         .on('error', console.error.bind(console))
