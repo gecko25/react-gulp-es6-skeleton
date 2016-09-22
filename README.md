@@ -11,5 +11,7 @@ Includes:
  
  
  # Getting started
+
  `npm install`
- `npm start` or `gulp serve`
+ 
+ `npm start`
